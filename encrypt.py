@@ -50,7 +50,7 @@ def cenc():
 		Encrypt command line input with command line key and output results
 	"""
 	if(len(sys.argv)) < 3:
-		print "Usage: python cenc.py <key> <string> [filename]"
+		print "Usage: python %s <key> <string> [filename]" % (sys.argv[0])
 		sys.exit(0)
 
 	key = sys.argv[1]				   
