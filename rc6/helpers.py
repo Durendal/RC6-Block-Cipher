@@ -4,6 +4,7 @@ import math
 def ROR(x, n, bits = 32):
     mask = (2L**n) - 1
     mask_bits = x & mask
+
     return (x >> n) | (mask_bits << (bits - n))
 
 #rotate left input x, by n bits
@@ -24,6 +25,7 @@ def blockConverter(sentence):
             temp = "0"*(8-len(temp)) + temp
         res += temp
     encoded.append(res)
+
     return encoded
 
 #converts 4 blocks array of long int into string
@@ -35,5 +37,6 @@ def deBlocker(blocks):
             temp = "0"*(32-len(temp)) + temp
         for i in range(0,4):
             s+=chr(int(temp[i*8:(i+1)*8],2))
+
     return s
 

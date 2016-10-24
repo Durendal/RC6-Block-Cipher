@@ -4,16 +4,16 @@ class Key(object):
 	"""
 		Key is a data structure representing the encryption key for RC6 encryption algorithm
 	"""
-	def __init__(self, key = None):
+	def __init__(self, key = " "):
 		"""
 			Take a ASCII string as key and generate a key from it.
 		"""
 		if key and len(key) < 16:
 			key += " " * ( 16 - len(key) )
 		
-		key = key[:16] if key else None
+		key = key[:16]
 		self.setKeyStr(key)
-		self._key = self.generateKey() if self._keyStr else None
+		self._key = self.generateKey()
 
 
 	#generate key s[0... 2r+3] from self._keyStr
