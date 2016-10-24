@@ -22,7 +22,7 @@ def blockConverter(sentence):
         temp = bin(ord(sentence[i]))[2:]
         if len(temp) <8:
             temp = "0"*(8-len(temp)) + temp
-        res = res + temp
+        res += temp
     encoded.append(res)
     return encoded
 
@@ -34,19 +34,18 @@ def deBlocker(blocks):
         if len(temp) <32:
             temp = "0"*(32-len(temp)) + temp
         for i in range(0,4):
-            s=s+chr(int(temp[i*8:(i+1)*8],2))
+            s+=chr(int(temp[i*8:(i+1)*8],2))
     return s
 
 #generate key s[0... 2r+3] from given input string userkey
 def generateKey(userkey):
     r=12
-    w=32
     b=len(userkey)
     modulo = 2**32
     s=(2*r+4)*[0]
     s[0]=0xB7E15163
     for i in range(1,2*r+4):
-        s[i]=(s[i-1]+0x9E3779B9)%(2**w)
+        s[i]=(s[i-1]+0x9E3779B9)%(modulo)
     encoded = blockConverter(userkey)
     #print encoded
     enlength = len(encoded)
