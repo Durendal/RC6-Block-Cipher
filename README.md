@@ -23,8 +23,6 @@ Implementation of RC6 encryption and decryption  in python.
 
 ## Functions
 
-* encrypt.py and decrypt.py are used to encrypt and decrypt using user input
-
-* cenc.py and cdec.py are used to encrypt and decrypt using command line input
+* encrypt.py and decrypt.py are used to encrypt and decrypt using user input or based on command line input
 
 * helper.py contains helper functions 

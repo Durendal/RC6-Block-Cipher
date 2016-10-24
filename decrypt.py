@@ -49,14 +49,14 @@ def cdec():
         loc = sys.argv[2]
     f = open(loc,"r")
     if not f:
-        print "Encrypted input not found in "+loc
+        print "Encrypted input not found in %s" % loc
         sys.exit(0)
     else:
         esentence = f.readline()
     cipher,orgi = decrypt(esentence,s)
     sentence = deBlocker(orgi)
     print "\nDecrypted String list: ",orgi
-    print "Decrypted String: " + sentence 
+    print "Decrypted String: %s" % sentence 
     
 
 
