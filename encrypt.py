@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys
 
 from rc6.ops import encrypt
