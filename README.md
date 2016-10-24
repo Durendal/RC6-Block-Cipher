@@ -25,6 +25,8 @@ Implementation of RC6 encryption and decryption  in python.
 
 * encrypt.py and decrypt.py are used to encrypt and decrypt using user input or based on command line input
 
-* helper.py contains helper functions 
+* rc6/helper.py contains helper functions 
 
-* key.py contains the data structure for the Key object
+* rc6/key.py contains the data structure for the Key object
+
+* rc6/ops.py contains the encrypt() and decrypt() functions as well as several functions that contain operations common to both
