@@ -19,10 +19,10 @@ def encData(sentence, key):
 	if len(sentence) < 16:
 		sentence += " " * ( 16 - len(sentence) )
 	
-	sentence	   = sentence[:16]
+	sentence = sentence[:16]
 	
-	orgi, cipher   = encrypt(sentence, s.getKey())
-	esentence	   = deBlocker(cipher)
+	orgi, cipher = encrypt(sentence, s.getKey())
+	esentence = deBlocker(cipher)
 
 	return (orgi, cipher, esentence)
 
@@ -32,9 +32,9 @@ def enc():
 	"""
 	print "ENCRYPTION: "
 
-	key			= raw_input("Enter Key(0-16 characters): ")
+	key	= raw_input("Enter Key(0-16 characters): ")
 		 
-	sentence	= raw_input("Enter Sentence(0-16 characters): ")
+	sentence = raw_input("Enter Sentence(0-16 characters): ")
 
 	orgi, cipher, esentence = encData(sentence, key)
 	
@@ -58,7 +58,7 @@ def cenc():
 		print "Usage: python cenc.py <key> <string>"
 		sys.exit(0)
 
-	key		 = sys.argv[1]				   
+	key = sys.argv[1]				   
 	sentence = sys.argv[2]
 
 	orgi, cipher, esentence = encData(sentence, key)

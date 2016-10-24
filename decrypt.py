@@ -16,7 +16,8 @@ def decData(key):
 	"""
 
 	s = Key(key)
-	print "UserKey: %s" % s.getKeyStr() 
+	print "UserKey: %s" % s.getKeyStr()
+
 	f = open("encrypted.txt", "r")
 
 	if not f:
@@ -24,10 +25,10 @@ def decData(key):
 		sys.exit(0)
 	
 	else:
-		esentence   = f.readline()
+		esentence = f.readline()
 	
-	cipher, orgi	= decrypt(esentence, s.getKey())
-	sentence		= deBlocker(orgi)
+	cipher, orgi = decrypt(esentence, s.getKey())
+	sentence = deBlocker(orgi)
 
 	return (cipher, orgi, esentence, sentence)
 
