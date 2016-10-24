@@ -27,11 +27,11 @@ class Key(object):
 		if not self._keyStr:
 			return None
 
-		r 		= 12
-		b 		= len(self._keyStr)
-		modulo 	= 2**32
-		s 		= (2*r+4)*[0]
-		s[0]	= 0xB7E15163
+		r = 12
+		b = len(self._keyStr)
+		modulo = 2**32
+		s = (2*r+4)*[0]
+		s[0] = 0xB7E15163
 
 		for i in range(1,2*r+4):
 			s[i] = (s[i-1]+0x9E3779B9)%(modulo)
