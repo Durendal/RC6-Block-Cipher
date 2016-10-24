@@ -15,8 +15,7 @@ class Key(object):
 		self._key	= None
 		self.setKeyStr(key)
 
-		if self._keyStr:
-			self._key = self.generateKey()
+		self._key = self.generateKey() if self._keyStr else None
 
 
 	#generate key s[0... 2r+3] from self._keyStr
