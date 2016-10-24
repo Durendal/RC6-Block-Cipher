@@ -11,8 +11,8 @@ def main():
 
 def encData(sentence, key):
 	"""
-        Encrypt the input string with the input key
-    """
+		Encrypt the input string with the input key
+	"""
 	s = Key(key)
 	print "UserKey: %s" % s.getKeyStr()
 
@@ -28,8 +28,8 @@ def encData(sentence, key):
 
 def enc():
 	"""
-        Prompt user for input and key, encrypt, and display results
-    """
+		Prompt user for input and key, encrypt, and display results
+	"""
 	print "ENCRYPTION: "
 
 	key = raw_input("Enter Key(0-16 characters): ")
