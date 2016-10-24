@@ -1,7 +1,7 @@
 import sys
 
 from rc6.ops import encrypt
-from rc6.helpers import generateKey, deBlocker
+from rc6.helpers import deBlocker
 from rc6.key import Key
 
 # Determine which mode to run in based on the number of command line arguments
@@ -11,7 +11,8 @@ def main():
 def encData(sentence, key):
 	
 	s = Key(key)
-	
+    print "UserKey: %s" % s.getKeyStr()
+    
 	if len(sentence) < 16:
 		sentence += " " * ( 16 - len(sentence) )
 	
@@ -28,8 +29,6 @@ def enc():
 
 	key = raw_input("Enter Key(0-16 characters): ")
 		 
-	print "UserKey: %s" % key 
-
 	sentence = raw_input("Enter Sentence(0-16 characters): ")
 
 	orgi, cipher, esentence = encData(sentence, key)
@@ -52,7 +51,7 @@ def cenc():
 		print "Usage: python cenc.py <key> <string>"
 		sys.exit(0)
 
-	key      = sys.argv[1]				   
+	key	     = sys.argv[1]				   
 	sentence = sys.argv[2]
 
 	orgi, cipher, esentence = encData(sentence, key)
@@ -60,7 +59,7 @@ def cenc():
 	print "\nEncrypted String list: ",cipher
 	print "Encrypted String: %s" % esentence
 	
-    f = open("encrypted.txt","w")
+	f = open("encrypted.txt","w")
 	f.write(esentence);
 	f.close()
 
