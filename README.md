@@ -5,11 +5,11 @@ Implementation of RC6 encryption and decryption  in python.
 
 ## Specification
 
-* Block size : 4*32 bit blocks
+* Block size : 4*32 bit Registers
 
 * Key size : 128bit
 
-* Rounds: 12
+* Rounds: 20
 
 ## Features
 
@@ -30,3 +30,5 @@ Implementation of RC6 encryption and decryption  in python.
 * rc6/key.py contains the data structure for the Key object
 
 * rc6/ops.py contains the encrypt() and decrypt() functions as well as several functions that contain operations common to both
+
+* rc6/block.py contains the data structure for a Block object
