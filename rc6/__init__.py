@@ -1,5 +1,5 @@
-__all__ = ["ops.encrypt", "ops.decrypt", "helpers", "key.Key"]
+__all__ = ["ops", "helpers", "key"]
 
 from ops import encrypt, decrypt
-import helpers
+from helpers import ROR, ROL, blockConverter, deBlocker
 from key import Key
