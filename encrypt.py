@@ -37,7 +37,7 @@ def enc():
     f.close()
 
 def cenc():
-    if(len[sys.argv]) < 3:
+    if(len(sys.argv)) < 3:
         print "Usage: python cenc.py <key> <string>"
         sys.exit(0)
 
