@@ -5,7 +5,7 @@ from rc6.ops import decrypt
 from rc6.helpers import deBlocker
 from rc6.key import Key
 
-def decData(key):
+def decData(key, fileName = "encrypted.txt"):
 	"""
 		Decrypt the input string with the input key
 	"""
@@ -13,7 +13,7 @@ def decData(key):
 	print "UserKey: %s" % s.getKeyStr()
 
 	try:
-		with open("encrypted.txt", "r") as f:
+		with open(fileName, "r") as f:
 		   esentence = f.readline()
 	except:
 		print "Encrypted input not found in encrypted.txt"
@@ -49,7 +49,7 @@ def cdec():
 	if(len(sys.argv)) < 2:
 		print "Usage: python cenc.py <key> optional(filename)"
 		sys.exit(0)
-
+	fileName = sys.argv[2] if len(sys.argv) > 2 else "encryption.txt"
 	key = sys.argv[1]
 	
 	cipher, orgi, esentence, sentence = decData(key)

@@ -42,10 +42,9 @@ def enc():
 	print "Encrypted String: %s" % esentence
 	print "Length of Encrypted String: %d" % len(esentence)
 
-	f = open("encrypted.txt","w")
-	f.write(esentence);
-	f.close()
-
+	with open("encrypted.txt","w") as f:
+	   f.write(esentence);
+	
 def cenc():
 	"""
 		Encrypt command line input with command line key and output results
@@ -62,13 +61,12 @@ def cenc():
 	print "\nEncrypted String list: ", cipher
 	print "Encrypted String: %s" % esentence
 	
-	f = open("encrypted.txt","w")
-	f.write(esentence);
-	f.close()
+	with open("encrypted.txt","w") as f:
+	   f.write(esentence);
 
 # Determine which mode to run in based on the number of command line arguments
 def main():
-    cenc() if len(sys.argv) > 1 else enc()
-    
+	cenc() if len(sys.argv) > 1 else enc()
+
 if __name__ == "__main__":
 	main()
