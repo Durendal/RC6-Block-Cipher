@@ -17,7 +17,7 @@ def decData(key):
 
 	s = Key(key)
 	print "UserKey: %s" % s.getKeyStr() 
-	f = open("encrypted.txt","r")
+	f = open("encrypted.txt", "r")
 
 	if not f:
 		print "Encrypted input not found in encrypted.txt"
@@ -26,7 +26,7 @@ def decData(key):
 	else:
 		esentence   = f.readline()
 	
-	cipher,orgi	 = decrypt(esentence, s.getKey())
+	cipher, orgi	= decrypt(esentence, s.getKey())
 	sentence		= deBlocker(orgi)
 
 	return (cipher, orgi, esentence, sentence)
@@ -37,11 +37,11 @@ def dec():
 	"""
 	print "DECRYPTION: "
 
-	key =raw_input("Enter Key(0-16 characters): ")
+	key = raw_input("Enter Key(0-16 characters): ")
 						 
 	cipher, orgi, esentence, sentence = decData(key)
 	
-	print "\nEncrypted String list: ",cipher
+	print "\nEncrypted String list: ", cipher
 	print "Encrypted String: %s" % esentence
 	print "Length of Encrypted String: %d" % len(esentence)
 
@@ -61,7 +61,7 @@ def cdec():
 	
 	cipher, orgi, esentence, sentence = decData(key)
 
-	print "\nDecrypted String list: ",orgi
+	print "\nDecrypted String list: ", orgi
 	print "Decrypted String: %s" % sentence 
 	
 
