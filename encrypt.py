@@ -5,10 +5,6 @@ from rc6.ops import encrypt
 from rc6.helpers import deBlocker
 from rc6.key import Key
 
-# Determine which mode to run in based on the number of command line arguments
-def main():
-	cenc() if len(sys.argv) > 1 else enc()
-
 def encData(sentence, key):
 	"""
 		Encrypt the input string with the input key
@@ -70,5 +66,9 @@ def cenc():
 	f.write(esentence);
 	f.close()
 
+# Determine which mode to run in based on the number of command line arguments
+def main():
+    cenc() if len(sys.argv) > 1 else enc()
+    
 if __name__ == "__main__":
 	main()

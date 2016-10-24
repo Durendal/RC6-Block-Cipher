@@ -5,15 +5,10 @@ from rc6.ops import decrypt
 from rc6.helpers import deBlocker
 from rc6.key import Key
 
-# Determine which mode to run in based on the number of command line arguments
-def main():
-	cdec() if len(sys.argv) > 1 else dec()
-	
 def decData(key):
 	"""
 		Decrypt the input string with the input key
 	"""
-
 	s = Key(key)
 	print "UserKey: %s" % s.getKeyStr()
 
@@ -64,7 +59,9 @@ def cdec():
 	print "\nDecrypted String list: ", orgi
 	print "Decrypted String: %s" % sentence 
 	
-
-
+# Determine which mode to run in based on the number of command line arguments
+def main():
+    cdec() if len(sys.argv) > 1 else dec()
+    
 if __name__ == "__main__":
 	main()
