@@ -1,6 +1,6 @@
 import sys
 
-from helpers import ROR, ROL, blockConverter, deBlocker
+from helpers import ROR, ROL, blockConverter
 
 def setup(sentence):
     """
