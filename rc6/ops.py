@@ -1,7 +1,7 @@
 from helpers import *
 import sys
 
-def encrypt(sentence,s):
+def setup(sentence):
     encoded = blockConverter(sentence)
     enlength = len(encoded)
     A = long(encoded[0],2)
@@ -14,9 +14,13 @@ def encrypt(sentence,s):
     orgi.append(C)
     orgi.append(D)
     r=12
-
     modulo = 2**32
     lgw = 5
+
+    return (A, B, C, D, r, modulo, lgw, orgi)
+
+def encrypt(sentence,s):
+    A, B, C, D, r, modulo, lgw, orgi = setup(sentence)  
     B = (B + s[0])%modulo
     D = (D + s[1])%modulo 
     for i in range(1,r+1):
@@ -39,21 +43,8 @@ def encrypt(sentence,s):
     return orgi,cipher
     
 def decrypt(esentence,s):
-    encoded = blockConverter(esentence)
-    enlength = len(encoded)
-    A = long(encoded[0],2)
-    B = long(encoded[1],2)
-    C = long(encoded[2],2)
-    D = long(encoded[3],2)
-    cipher = []
-    cipher.append(A)
-    cipher.append(B)
-    cipher.append(C)
-    cipher.append(D)
-    r=12
+    A, B, C, D, r, modulo, lgw, cipher = setup(esentence)  
 
-    modulo = 2**32
-    lgw = 5
     C = (C - s[2*r+3])%modulo
     A = (A - s[2*r+2])%modulo
     for j in range(1,r+1):
