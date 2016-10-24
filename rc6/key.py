@@ -16,7 +16,7 @@ class Key(object):
 		self.setKeyStr(key)
 
 		if self._keyStr:
-			self._key 	= self.generateKey()
+			self._key = self.generateKey()
 
 
 	#generate key s[0... 2r+3] from self._keyStr
@@ -27,21 +27,21 @@ class Key(object):
 		if not self._keyStr:
 			return None
 
-		r 		=12
-		b 		=len(self._keyStr)
+		r 		= 12
+		b 		= len(self._keyStr)
 		modulo 	= 2**32
-		s 		=(2*r+4)*[0]
-		s[0]	=0xB7E15163
+		s 		= (2*r+4)*[0]
+		s[0]	= 0xB7E15163
 
 		for i in range(1,2*r+4):
-			s[i]=(s[i-1]+0x9E3779B9)%(modulo)
+			s[i] = (s[i-1]+0x9E3779B9)%(modulo)
 		
 		encoded = blockConverter(self._keyStr)
-		enlength= len(encoded)
-		l 		= enlength*[0]
+		enlength = len(encoded)
+		l = enlength*[0]
 		
 		for i in range(1,enlength+1):
-			l[enlength-i]=long(encoded[i-1],2)
+			l[enlength-i] = long(encoded[i-1],2)
 		
 		v = 3*max(enlength,2*r+4)
 		A=B=i=j=0
