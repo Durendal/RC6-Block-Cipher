@@ -9,7 +9,9 @@ def main():
 	cenc() if len(sys.argv) > 1 else enc()
 
 def encData(sentence, key):
-	
+	"""
+        Encrypt the input string with the input key
+    """
 	s = Key(key)
 	print "UserKey: %s" % s.getKeyStr()
 
@@ -24,7 +26,9 @@ def encData(sentence, key):
 	return (orgi, cipher, esentence)
 
 def enc():
-	
+	"""
+        Prompt user for input and key, encrypt, and display results
+    """
 	print "ENCRYPTION: "
 
 	key = raw_input("Enter Key(0-16 characters): ")
@@ -46,7 +50,9 @@ def enc():
 	f.close()
 
 def cenc():
-
+	"""
+		Encrypt command line input with command line key and output results
+	"""
 	if(len(sys.argv)) < 3:
 		print "Usage: python cenc.py <key> <string>"
 		sys.exit(0)

@@ -1,10 +1,14 @@
 from helpers import blockConverter, ROL
 
 class Key(object):
-
+	"""
+		Key is a data structure representing the encryption key for RC6 encryption algorithm
+	"""
 	def __init__(self, key = None):
-
-		if key and len(key) <16:
+		"""
+			Take a ASCII string as key and generate a key from it.
+		"""
+		if key and len(key) < 16:
 			key += " " * ( 16 - len(key) )
 		
 		key 		= key[:16] if key else None
@@ -17,6 +21,9 @@ class Key(object):
 
 	#generate key s[0... 2r+3] from self._keyStr
 	def generateKey(self):
+		"""
+			Generate key from keyStr
+		"""
 		if not self._keyStr:
 			return None
 
@@ -48,11 +55,19 @@ class Key(object):
 		return s
 
 	def setKeyStr(self, key):
+		"""
+			Set self._keyStr to key
+		"""
 		self._keyStr = key
 
 	def getKeyStr(self):
+		"""
+			Return the ASCII Key string
+		"""
 		return self._keyStr
 
 	def getKey(self):
-
+		"""
+			Return the generated key
+		"""
 		return self._key

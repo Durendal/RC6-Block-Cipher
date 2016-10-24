@@ -9,6 +9,9 @@ def main():
 	cdec() if len(sys.argv) > 1 else dec()
 	
 def decData(key):
+	"""
+		Decrypt the input string with the input key
+	"""
 
 	s = Key(key)
 	print "UserKey: %s" % s.getKeyStr() 
@@ -27,7 +30,9 @@ def decData(key):
 	return (cipher, orgi, esentence, sentence)
 
 def dec():
-
+	"""
+		Prompt user for input and key, decrypt, and display results
+	"""
 	print "DECRYPTION: "
 
 	key =raw_input("Enter Key(0-16 characters): ")
@@ -43,7 +48,9 @@ def dec():
 	print "Length of Decrypted String: %d" % len(sentence)
 	
 def cdec():
-
+	"""
+		Decrypt command line input with command line key and output results
+	"""
 	if(len(sys.argv)) < 2:
 		print "Usage: python cenc.py <key> optional(filename)"
 		sys.exit(0)

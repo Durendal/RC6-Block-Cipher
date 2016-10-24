@@ -2,6 +2,9 @@ from helpers import *
 import sys
 
 def setup(sentence):
+    """
+        Perform basic setup that applies to both encrypt and decrypt methods
+    """
     encoded = blockConverter(sentence)
     enlength = len(encoded)
     A = long(encoded[0],2)
@@ -20,6 +23,9 @@ def setup(sentence):
     return (A, B, C, D, r, modulo, lgw, orgi)
 
 def encrypt(sentence,s):
+    """
+        Encrypt sentence with key s
+    """
     A, B, C, D, r, modulo, lgw, orgi = setup(sentence)  
     B = (B + s[0])%modulo
     D = (D + s[1])%modulo 
@@ -43,6 +49,9 @@ def encrypt(sentence,s):
     return orgi,cipher
     
 def decrypt(esentence,s):
+    """
+        Decrypt esentence with key s
+    """
     A, B, C, D, r, modulo, lgw, cipher = setup(esentence)  
 
     C = (C - s[2*r+3])%modulo
