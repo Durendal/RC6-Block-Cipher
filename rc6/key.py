@@ -2,13 +2,13 @@ from helpers import blockConverter, ROL
 class Key(object):
 
 	def __init__(self, key = None):
-		if len(key) <16:
+		if key and len(key) <16:
 			key += " "*(16-len(key))
-	
-		key = key[:16]
 		
-		self._key 		= None
-		self._keyStr 	= key
+		key = key[:16] if key else None
+		
+		self._key		= None
+		self.setKeyStr(key)
 
 		if self._keyStr:
 			self._key 	= self.generateKey()
@@ -17,13 +17,13 @@ class Key(object):
 	#generate key s[0... 2r+3] from self._keyStr
 	def generateKey(self):
 		if not self._keyStr:
-			return
+			return None
 
 		r 		=12
 		b 		=len(self._keyStr)
 		modulo 	= 2**32
 		s 		=(2*r+4)*[0]
-		s[0] 	=0xB7E15163
+		s[0]	=0xB7E15163
 
 		for i in range(1,2*r+4):
 			s[i]=(s[i-1]+0x9E3779B9)%(modulo)
