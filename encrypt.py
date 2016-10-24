@@ -50,7 +50,7 @@ def cenc():
 		Encrypt command line input with command line key and output results
 	"""
 	if(len(sys.argv)) < 3:
-		print "Usage: python cenc.py <key> <string>"
+		print "Usage: python cenc.py <key> <string> [filename]"
 		sys.exit(0)
 
 	key = sys.argv[1]				   
@@ -60,8 +60,9 @@ def cenc():
 		
 	print "\nEncrypted String list: ", cipher
 	print "Encrypted String: %s" % esentence
-	
-	with open("encrypted.txt","w") as f:
+	fileName = "encrypted.txt" if len(sys.argv) < 4 else sys.argv[3]
+
+	with open(fileName, "w") as f:
 	   f.write(esentence);
 
 # Determine which mode to run in based on the number of command line arguments

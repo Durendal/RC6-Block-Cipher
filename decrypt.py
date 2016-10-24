@@ -47,7 +47,7 @@ def cdec():
 		Decrypt command line input with command line key and output results
 	"""
 	if(len(sys.argv)) < 2:
-		print "Usage: python cenc.py <key> optional(filename)"
+		print "Usage: python %s <key> [filename]" % (sys.argv[0])
 		sys.exit(0)
 	fileName = sys.argv[2] if len(sys.argv) > 2 else "encryption.txt"
 	key = sys.argv[1]
