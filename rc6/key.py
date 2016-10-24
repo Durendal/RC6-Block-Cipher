@@ -21,11 +21,7 @@ class Key(object):
 		"""
 			Generate key from keyStr
 		"""
-		if not self._keyStr:
-			return None
-
 		r = 12
-		b = len(self._keyStr)
 		modulo = 2**32
 		s = (2*r+4)*[0]
 		s[0] = 0xB7E15163
