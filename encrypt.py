@@ -2,23 +2,20 @@ import sys
 
 from rc6.ops import encrypt
 from rc6.helpers import generateKey, deBlocker
+from rc6.key import Key
 
 def main():
     cenc() if len(sys.argv) > 1 else enc()
 
 def encData(sentence, key):
-    if len(key) <16:
-        key += " "*(16-len(key))
     
-    key = key[:16]
-    
-    s = generateKey(key)
+    s = Key(key)
     
     if len(sentence) <16:
         sentence += " "*(16-len(sentence))
     sentence = sentence[:16]
     
-    orgi,cipher = encrypt(sentence,s)
+    orgi,cipher = encrypt(sentence,s.getKey())
     esentence = deBlocker(cipher)
 
     return (orgi, cipher, esentence)
