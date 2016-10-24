@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import sys
 
-from rc6.helpers import deBlocker
 from rc6.ops import decrypt
+from rc6.block import Block
 from rc6.key import Key
 
 def decData(key, fileName = "encrypted.txt"):
@@ -20,7 +20,8 @@ def decData(key, fileName = "encrypted.txt"):
 		sys.exit(0)
 	
 	cipher, orgi = decrypt(esentence, s.getKey())
-	sentence = deBlocker(orgi)
+	blok = Block(registers=orgi)
+	sentence = blok.getString()
 
 	return (cipher, orgi, esentence, sentence)
 
@@ -46,7 +47,7 @@ def cdec():
 	"""
 		Decrypt command line input with command line key and output results
 	"""
-	if(len(sys.argv)) < 2:
+	if len(sys.argv) < 2:
 		print "Usage: python %s <key> [filename]" % (sys.argv[0])
 		sys.exit(0)
 

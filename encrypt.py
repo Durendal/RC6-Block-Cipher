@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 
-from rc6.helpers import deBlocker
+from rc6.block import Block
 from rc6.ops import encrypt
 from rc6.key import Key
 
@@ -18,7 +18,8 @@ def encData(sentence, key):
 	sentence = sentence[:16]
 	
 	orgi, cipher = encrypt(sentence, s.getKey())
-	esentence = deBlocker(cipher)
+	blok = Block(registers=cipher)
+	esentence = blok.getString()
 
 	return (orgi, cipher, esentence)
 
@@ -38,7 +39,7 @@ def enc():
 	print "Original String list: ", orgi
 	print "Length of Input String: %d" % len(sentence)
 	
-	print "\nEncrypted String list: ",cipher
+	print "\nEncrypted String list: ", cipher
 	print "Encrypted String: %s" % esentence
 	print "Length of Encrypted String: %d" % len(esentence)
 
