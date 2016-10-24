@@ -32,7 +32,7 @@ def enc():
 	"""
 	print "ENCRYPTION: "
 
-	key	= raw_input("Enter Key(0-16 characters): ")
+	key = raw_input("Enter Key(0-16 characters): ")
 		 
 	sentence = raw_input("Enter Sentence(0-16 characters): ")
 
