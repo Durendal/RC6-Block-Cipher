@@ -11,12 +11,12 @@ def main():
 def encData(sentence, key):
 	
 	s = Key(key)
-    print "UserKey: %s" % s.getKeyStr()
-    
+	print "UserKey: %s" % s.getKeyStr()
+
 	if len(sentence) < 16:
 		sentence += " " * ( 16 - len(sentence) )
 	
-	Sentence = sentence[:16]
+	sentence = sentence[:16]
 	
 	orgi,cipher = encrypt(sentence, s.getKey())
 	esentence = deBlocker(cipher)
@@ -51,7 +51,7 @@ def cenc():
 		print "Usage: python cenc.py <key> <string>"
 		sys.exit(0)
 
-	key	     = sys.argv[1]				   
+	key		 = sys.argv[1]				   
 	sentence = sys.argv[2]
 
 	orgi, cipher, esentence = encData(sentence, key)
