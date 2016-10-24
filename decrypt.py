@@ -12,14 +12,12 @@ def decData(key):
 	s = Key(key)
 	print "UserKey: %s" % s.getKeyStr()
 
-	f = open("encrypted.txt", "r")
-
-	if not f:
+	try:
+		with open("encrypted.txt", "r") as f:
+		   esentence = f.readline()
+	except:
 		print "Encrypted input not found in encrypted.txt"
 		sys.exit(0)
-	
-	else:
-		esentence = f.readline()
 	
 	cipher, orgi = decrypt(esentence, s.getKey())
 	sentence = deBlocker(orgi)
@@ -61,7 +59,7 @@ def cdec():
 	
 # Determine which mode to run in based on the number of command line arguments
 def main():
-    cdec() if len(sys.argv) > 1 else dec()
-    
+	cdec() if len(sys.argv) > 1 else dec()
+	
 if __name__ == "__main__":
 	main()
