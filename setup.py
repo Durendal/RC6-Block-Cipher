@@ -13,7 +13,7 @@ setup(
 	version='0.1dev',
 	packages=find_packages(),
 	license='GPL',
-	description='Module for encrypting and decrypting with the rc6 block cipher',
+	description='Module for encrypting and decrypting with the RC6 block cipher',
 	long_description=open('README.md').read(),
 	
 )
