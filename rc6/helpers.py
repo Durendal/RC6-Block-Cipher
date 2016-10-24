@@ -37,29 +37,3 @@ def deBlocker(blocks):
             s+=chr(int(temp[i*8:(i+1)*8],2))
     return s
 
-#generate key s[0... 2r+3] from given input string userkey
-def generateKey(userkey):
-    r=12
-    b=len(userkey)
-    modulo = 2**32
-    s=(2*r+4)*[0]
-    s[0]=0xB7E15163
-    for i in range(1,2*r+4):
-        s[i]=(s[i-1]+0x9E3779B9)%(modulo)
-    encoded = blockConverter(userkey)
-    #print encoded
-    enlength = len(encoded)
-    l = enlength*[0]
-    for i in range(1,enlength+1):
-        l[enlength-i]=long(encoded[i-1],2)
-    
-    v = 3*max(enlength,2*r+4)
-    A=B=i=j=0
-    
-    for index in range(0,v):
-        A = s[i] = ROL((s[i] + A + B)%modulo,3,32)
-        B = l[j] = ROL((l[j] + A + B)%modulo,(A+B)%32,32) 
-        i = (i + 1) % (2*r + 4)
-        j = (j + 1) % enlength
-    return s
-    
