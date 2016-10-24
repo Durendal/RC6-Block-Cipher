@@ -1,13 +1,14 @@
 from helpers import blockConverter, ROL
+
 class Key(object):
 
 	def __init__(self, key = None):
+
 		if key and len(key) <16:
-			key += " "*(16-len(key))
+			key += " " * ( 16 - len(key) )
 		
-		key = key[:16] if key else None
-		
-		self._key		= None
+		key 		= key[:16] if key else None
+		self._key	= None
 		self.setKeyStr(key)
 
 		if self._keyStr:
@@ -29,8 +30,6 @@ class Key(object):
 			s[i]=(s[i-1]+0x9E3779B9)%(modulo)
 		
 		encoded = blockConverter(self._keyStr)
-		#print encoded
-		
 		enlength= len(encoded)
 		l 		= enlength*[0]
 		
