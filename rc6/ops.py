@@ -1,5 +1,6 @@
-from helpers import *
 import sys
+
+from helpers import *
 
 def setup(sentence):
     """
@@ -22,6 +23,15 @@ def setup(sentence):
 
     return (A, B, C, D, r, modulo, lgw, orgi)
 
+def prologue(A, B, C, D):
+    orgi = []
+    orgi.append(A)
+    orgi.append(B)
+    orgi.append(C)
+    orgi.append(D)
+
+    return orgi
+
 def encrypt(sentence,s):
     """
         Encrypt sentence with key s
@@ -41,11 +51,9 @@ def encrypt(sentence,s):
         (A, B, C, D)  =  (B, C, D, A)
     A = (A + s[2*r + 2])%modulo 
     C = (C + s[2*r + 3])%modulo
-    cipher = []
-    cipher.append(A)
-    cipher.append(B)
-    cipher.append(C)
-    cipher.append(D)
+
+    cipher = prologue(A, B, C, D)
+
     return orgi,cipher
     
 def decrypt(esentence,s):
@@ -69,9 +77,7 @@ def decrypt(esentence,s):
         A = (ROR((A-s[2*i])%modulo,umod,32)   ^t) 
     D = (D - s[1])%modulo 
     B = (B - s[0])%modulo
-    orgi = []
-    orgi.append(A)
-    orgi.append(B)
-    orgi.append(C)
-    orgi.append(D)
+
+    orgi = prologue(A, B, C, D)
+    
     return cipher,orgi
