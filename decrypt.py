@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import sys
 
-from rc6.ops import decrypt
 from rc6.helpers import deBlocker
+from rc6.ops import decrypt
 from rc6.key import Key
 
 def decData(key, fileName = "encrypted.txt"):
@@ -49,6 +49,7 @@ def cdec():
 	if(len(sys.argv)) < 2:
 		print "Usage: python %s <key> [filename]" % (sys.argv[0])
 		sys.exit(0)
+
 	fileName = sys.argv[2] if len(sys.argv) > 2 else "encryption.txt"
 	key = sys.argv[1]
 	

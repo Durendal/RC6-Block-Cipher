@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import sys
 
-from rc6.ops import encrypt
 from rc6.helpers import deBlocker
+from rc6.ops import encrypt
 from rc6.key import Key
 
 def encData(sentence, key):
