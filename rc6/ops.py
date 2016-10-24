@@ -12,11 +12,9 @@ def setup(sentence):
     B = long(encoded[1],2)
     C = long(encoded[2],2)
     D = long(encoded[3],2)
-    orgi = []
-    orgi.append(A)
-    orgi.append(B)
-    orgi.append(C)
-    orgi.append(D)
+
+    orgi = prologue(A, B, C, D)
+
     r=12
     modulo = 2**32
     lgw = 5
@@ -79,5 +77,5 @@ def decrypt(esentence,s):
     B = (B - s[0])%modulo
 
     orgi = prologue(A, B, C, D)
-    
+
     return cipher,orgi
