@@ -11,10 +11,8 @@ class Key(object):
 		if key and len(key) < 16:
 			key += " " * ( 16 - len(key) )
 		
-		key 		= key[:16] if key else None
-		self._key	= None
+		key = key[:16] if key else None
 		self.setKeyStr(key)
-
 		self._key = self.generateKey() if self._keyStr else None
 
 
