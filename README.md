@@ -2,7 +2,7 @@ RC6-Block-Cipher
 ================
 
 Implementation of RC6-w/r/b encryption and decryption in python.
-Values for w/r/b are 32/20/128 with plans to allow customization to other values in future releases.
+Values for w/r/b are 32/20/128
 
 ## Specification
 
