@@ -38,11 +38,27 @@ Values for w/r/b are 32/20/128 with plans to allow customization to other values
 
 ## Example:
 
-	python test.py
+	test code:
+		import rc6
+		from rc6.key import Key
 
-	Test String: This is a test string that is more than 16 chars and spans over multiple blocks, Key: abcdefghijklmnopqrstuvqxyz
-	len(testString): 79
-	len(str): 80
-	len(str2): 80
-	Encrypted: ����ۋ��/�d�eu���T��.����P�Rw��UGϽB��Шő<&s�D~4�t�Z�!�Ӑ!�L{B~ �
-	Decrypted:  This is a test string that is more than 16 chars and spans over multiple blocks
+		testString = "This is a test string that is more than 16 chars and spans over multiple blocks"
+		testKey = "abcdefghijklmnopqrstuvqxyz"
+		res, str = rc6.encrypt(testString, testKey)
+		print "Test String: %s, Key: %s" % (testString, testKey)
+		res2, str2 = rc6.decrypt(str, testKey)
+		print "len(testString): %d" % len(testString)
+		print "len(str): %d" % len(str)
+		print "len(str2): %d" % len(str2)
+		print "Before: ", str
+		print "After: ", str2
+	
+	output:
+		python test.py
+
+		Test String: This is a test string that is more than 16 chars and spans over multiple blocks, Key: abcdefghijklmnopqrstuvqxyz
+		len(testString): 79
+		len(str): 80
+		len(str2): 80
+		Encrypted: ����ۋ��/�d�eu���T��.����P�Rw��UGϽB��Шő<&s�D~4�t�Z�!�Ӑ!�L{B~ �
+		Decrypted:  This is a test string that is more than 16 chars and spans over multiple blocks
