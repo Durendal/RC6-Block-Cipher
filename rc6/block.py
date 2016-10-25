@@ -1,3 +1,5 @@
+import binascii
+
 class Block(object):
 
 	def __init__(self, sentence = None, registers = None):
@@ -23,10 +25,12 @@ class Block(object):
 	    encoded = []
 	    res = ""
 	    for i in range(0,len(self._sentence)):
-	        if i%4==0 and i!=0 :
+	        if (i % 4 == 0) and (i != 0):
 	            encoded.append(res)
 	            res = ""
+
 	        temp = bin(ord(self._sentence[i]))[2:]
+
 	        if len(temp) <8:
 	            temp = "0"*(8-len(temp)) + temp
 	        res += temp
@@ -46,10 +50,14 @@ class Block(object):
 	        for i in range(0,4):
 	            s+=chr(int(temp[i*8:(i+1)*8],2))
 	    self._sentence = s
+
 	    return s
 
 	def getString(self):
 		return self._sentence
+
+	def getStringBase64(self):
+		return binascii.b2a_base64(self._sentence)
 
 	def getRegisters(self):
 		return self._registers
