@@ -28,7 +28,7 @@ def dec():
 	"""
 	print "DECRYPTION: "
 
-	key = raw_input("Enter Key(0-16 characters): ")
+	key = raw_input("Enter Key: ")
 						 
 	blocks, text = decData(key)
 	
