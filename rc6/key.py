@@ -41,6 +41,7 @@ class Key(object):
 		A=B=i=j=0
 		
 		for index in range(0, v):
+			
 			A = s[i] = ROL((s[i] + A + B) % modulo, 3, 32)
 			B = l[j] = ROL((l[j] + A + B) % modulo, (A + B) % 32, 32) 
 			i = (i + 1) % (2 * r + 4)
