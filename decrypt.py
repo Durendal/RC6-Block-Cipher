@@ -19,11 +19,8 @@ def decData(key, fileName = "encrypted.txt"):
 		print "Encrypted input not found in encrypted.txt"
 		sys.exit(0)
 	
-	cipher, orgi = decrypt(esentence, s.getKey())
-	blok = Block(registers=orgi)
-	sentence = blok.getString()
-
-	return (cipher, orgi, esentence, sentence)
+	return decrypt(esentence, key)
+	
 
 def dec():
 	"""
@@ -33,15 +30,14 @@ def dec():
 
 	key = raw_input("Enter Key(0-16 characters): ")
 						 
-	cipher, orgi, esentence, sentence = decData(key)
+	blocks, text = decData(key)
 	
-	print "\nEncrypted String list: ", cipher
-	print "Encrypted String: %s" % esentence
-	print "Length of Encrypted String: %d" % len(esentence)
+	print "\nDecrypted String list: "
+	for blk in blocks:
+		print blk.getRegisters()
 
-	print "\nDecrypted String list: ", orgi
-	print "Decrypted String: %s " % sentence 
-	print "Length of Decrypted String: %d" % len(sentence)
+	print "Decrypted String: %s " % text 
+	print "Length of Decrypted String: %d" % len(text)
 	
 def cdec():
 	"""
@@ -54,10 +50,13 @@ def cdec():
 	fileName = sys.argv[2] if len(sys.argv) > 2 else "encryption.txt"
 	key = sys.argv[1]
 	
-	cipher, orgi, esentence, sentence = decData(key)
+	blocks, text = decData(key)
 
-	print "\nDecrypted String list: ", orgi
-	print "Decrypted String: %s" % sentence 
+	print "\nDecrypted String list: "
+	for blk in blocks:
+		print blk.getRegisters()
+
+	print "Decrypted String: %s" % text
 	
 # Determine which mode to run in based on the number of command line arguments
 def main():

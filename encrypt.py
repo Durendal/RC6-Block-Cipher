@@ -3,25 +3,6 @@ import sys
 
 from rc6.block import Block
 from rc6.ops import encrypt
-from rc6.key import Key
-
-def encData(sentence, key):
-	"""
-		Encrypt the input string with the input key
-	"""
-	s = Key(key)
-	print "UserKey: %s" % s.getKeyStr()
-
-	if len(sentence) < 16:
-		sentence += " " * ( 16 - len(sentence) )
-	
-	sentence = sentence[:16]
-	
-	orgi, cipher = encrypt(sentence, s.getKey())
-	blok = Block(registers=cipher)
-	esentence = blok.getString()
-
-	return (orgi, cipher, esentence)
 
 def enc():
 	"""
@@ -33,18 +14,19 @@ def enc():
 		 
 	sentence = raw_input("Enter Sentence(0-16 characters): ")
 
-	orgi, cipher, esentence = encData(sentence, key)
+	blocks, text = encrypt(sentence, key)
 	
 	print "\nInput String: %s" % sentence 
-	print "Original String list: ", orgi
 	print "Length of Input String: %d" % len(sentence)
 	
-	print "\nEncrypted String list: ", cipher
-	print "Encrypted String: %s" % esentence
-	print "Length of Encrypted String: %d" % len(esentence)
+	print "\nEncrypted String list: ", text
+	for blk in blocks:
+		print blk.getRegisters()
+	print "Encrypted String: %s" % text
+	print "Length of Encrypted String: %d" % len(text)
 
 	with open("encrypted.txt","w") as f:
-	   f.write(esentence);
+	   f.write(text);
 	
 def cenc():
 	"""
@@ -57,14 +39,17 @@ def cenc():
 	key = sys.argv[1]				   
 	sentence = sys.argv[2]
 
-	orgi, cipher, esentence = encData(sentence, key)
+	blocks, text = encrypt(sentence, key)
 		
-	print "\nEncrypted String list: ", cipher
-	print "Encrypted String: %s" % esentence
+	print "\nEncrypted String list: "
+	for blk in blocks:
+		print blk.getRegisters()
+
+	print "Encrypted String: %s" % text
 	fileName = "encrypted.txt" if len(sys.argv) < 4 else sys.argv[3]
 
 	with open(fileName, "w") as f:
-	   f.write(esentence);
+	   f.write(text);
 
 # Determine which mode to run in based on the number of command line arguments
 def main():
