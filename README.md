@@ -1,15 +1,18 @@
 RC6-Block-Cipher
 ================
 
-Implementation of RC6 encryption and decryption  in python.
+Implementation of RC6-w/r/b encryption and decryption in python.
+Values for w/r/b are 32/20/128 with plans to allow customization to other values in future releases.
 
 ## Specification
 
-* Block size : 4*32 bit Registers
+* Block size : 4 * 32 bit Registers = 128 bits
 
-* Key size : 128bit
+* Key size : 128 bits
 
 * Rounds: 20
+
+* Word Size: 32 bits
 
 ## Features
 
