@@ -1,5 +1,4 @@
 import rc6
-from rc6.key import Key
 
 testString = "This is a test string that is more than 16 chars and spans over multiple blocks"
 testKey = "abcdefghijklmnopqrstuvqxyz"
