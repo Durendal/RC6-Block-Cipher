@@ -26,7 +26,7 @@ Values for w/r/b are 32/20/128 with plans to allow customization to other values
 
 ## Functions
 
-* encrypt.py and decrypt.py are used to encrypt and decrypt using user input or based on command line input
+* encrypt.py and decrypt.py are used to encrypt and decrypt using user input or based on command line arguments
 
 * rc6/helper.py contains helper functions 
 
