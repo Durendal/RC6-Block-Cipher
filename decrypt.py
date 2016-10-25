@@ -31,7 +31,7 @@ def dec():
 	key = raw_input("Enter Key: ")
 						 
 	blocks, text = decData(key)
-	
+	print "%d Blocks" % len(blocks)
 	print "\nDecrypted String list: "
 	for blk in blocks:
 		print blk.getRegisters()
@@ -51,7 +51,7 @@ def cdec():
 	key = sys.argv[1]
 	
 	blocks, text = decData(key)
-
+	print "%d Blocks" % len(blocks)
 	print "\nDecrypted String list: "
 	for blk in blocks:
 		print blk.getRegisters()

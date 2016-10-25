@@ -15,7 +15,7 @@ def enc():
 	sentence = raw_input("Enter Sentence: ")
 	print "User Key: %s" % key[:16]
 	blocks, text = encrypt(sentence, key)
-	
+	print "%d Blocks" % len(blocks)
 	print "\nInput String: %s" % sentence 
 	print "Length of Input String: %d" % len(sentence)
 	
@@ -40,7 +40,7 @@ def cenc():
 	sentence = sys.argv[2]
 
 	blocks, text = encrypt(sentence, key)
-		
+	print "%d Blocks" % len(blocks)		
 	print "\nEncrypted String list: "
 	for blk in blocks:
 		print blk.getRegisters()
