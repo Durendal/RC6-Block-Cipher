@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import binascii
 import sys
 
 from rc6.block import Block
@@ -13,7 +14,7 @@ def enc():
 	key = raw_input("Enter Key: ")
 		 
 	sentence = raw_input("Enter Sentence: ")
-	print "User Key: %s" % key[:16]
+	print "\n\nUser Key: %s" % key[:16]
 	blocks, text = encrypt(sentence, key)
 	print "%d Blocks" % len(blocks)
 	print "\nInput String: %s" % sentence 
@@ -22,7 +23,8 @@ def enc():
 	print "\nEncrypted String list: ", text
 	for blk in blocks:
 		print blk.getRegisters()
-	print "Encrypted String: %s" % text
+	print "Encrypted String base64: %s" % binascii.b2a_base64(text)
+	print "Encrypted String Binary: %s" % text
 	print "Length of Encrypted String: %d" % len(text)
 
 	with open("encrypted.txt","wb") as f:
@@ -40,15 +42,15 @@ def cenc():
 	sentence = sys.argv[2]
 
 	blocks, text = encrypt(sentence, key)
-	print "%d Blocks" % len(blocks)		
+	print "\n\n%d Blocks" % len(blocks)		
 	print "\nEncrypted String list: "
 	for blk in blocks:
 		print blk.getRegisters()
-
-	print "Encrypted String: %s" % text
+	print "Encrypted String base64: %s" % binascii.b2a_base64(text)
+	print "Encrypted String Binary: %s" % text
 	fileName = "encrypted.txt" if len(sys.argv) < 4 else sys.argv[3]
 
-	with open(fileName, "w") as f:
+	with open(fileName, "wb") as f:
 	   f.write(text);
 
 # Determine which mode to run in based on the number of command line arguments

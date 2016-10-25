@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import binascii
 import sys
 
 from rc6.ops import decrypt
@@ -17,7 +18,8 @@ def decData(key, fileName = "encrypted.txt"):
 	except:
 		print "Encrypted input not found in encrypted.txt"
 		sys.exit(0)
-	
+	print "Encrypted text binary: %s" % esentence
+	print "Encrypted text base64: %s" % binascii.b2a_base64(esentence)
 	return decrypt(esentence, key)
 	
 
