@@ -44,5 +44,5 @@ Values for w/r/b are 32/20/128 with plans to allow customization to other values
 	len(testString): 79
 	len(str): 80
 	len(str2): 80
-	Before: ����ۋ��/�d�eu���T��.����P�Rw��UGϽB��Шő<&s�D~4�t�Z�!�Ӑ!�L{B~ �
-	After:  This is a test string that is more than 16 chars and spans over multiple blocks
+	Encrypted: ����ۋ��/�d�eu���T��.����P�Rw��UGϽB��Шő<&s�D~4�t�Z�!�Ӑ!�L{B~ �
+	Decrypted:  This is a test string that is more than 16 chars and spans over multiple blocks
