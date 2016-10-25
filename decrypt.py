@@ -13,8 +13,8 @@ def decData(key, fileName = "encrypted.txt"):
 	print "UserKey: %s" % s.getKeyStr()
 
 	try:
-		with open(fileName, "r") as f:
-		   esentence = f.readline()
+		with open(fileName, "rb") as f:
+		   esentence = ''.join(f.readlines())
 	except:
 		print "Encrypted input not found in encrypted.txt"
 		sys.exit(0)
