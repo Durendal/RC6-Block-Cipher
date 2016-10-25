@@ -25,7 +25,7 @@ def enc():
 	print "Encrypted String: %s" % text
 	print "Length of Encrypted String: %d" % len(text)
 
-	with open("encrypted.txt","w") as f:
+	with open("encrypted.txt","wb") as f:
 	   f.write(text);
 	
 def cenc():
