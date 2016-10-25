@@ -2,7 +2,6 @@
 import sys
 
 from rc6.ops import decrypt
-from rc6.block import Block
 from rc6.key import Key
 
 def decData(key, fileName = "encrypted.txt"):
@@ -10,7 +9,7 @@ def decData(key, fileName = "encrypted.txt"):
 		Decrypt the input string with the input key
 	"""
 	s = Key(key)
-	print "UserKey: %s" % s.getKeyStr()
+	print "\n\nUserKey: %s" % s.getKeyStr()
 
 	try:
 		with open(fileName, "rb") as f:
