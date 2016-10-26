@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import binascii
+import string
+import base64
 import sys
 
 from rc6.ops import decrypt
 from rc6.key import Key
+
+# From http://stackoverflow.com/a/31566605/3718401 Thanks skyler!
+def isASCII(s):
+	return all(c in string.printable for c in s)
 
 def decData(key, fileName = "encrypted.txt"):
 	"""
@@ -16,10 +22,11 @@ def decData(key, fileName = "encrypted.txt"):
 		with open(fileName, "rb") as f:
 		   esentence = ''.join(f.readlines())
 	except:
-		print "Encrypted input not found in encrypted.txt"
+		print "Encrypted input not found in %s" % fileName
 		sys.exit(0)
-	print "Encrypted text binary: %s" % esentence
-	print "Encrypted text base64: %s" % binascii.b2a_base64(esentence)
+	print "Encrypted text %s: %s" % ("base64" if isASCII(esentence) else "Binary", esentence)
+	if isASCII(esentence):
+		esentence = binascii.a2b_base64(esentence)
 	return decrypt(esentence, key)
 	
 
@@ -48,10 +55,10 @@ def cdec():
 		print "Usage: python %s <key> [filename]" % (sys.argv[0])
 		sys.exit(0)
 
-	fileName = sys.argv[2] if len(sys.argv) > 2 else "encryption.txt"
+	fileName = sys.argv[2] if len(sys.argv) > 2 else "encrypted.txt"
 	key = sys.argv[1]
-	
-	blocks, text = decData(key)
+
+	blocks, text = decData(key, fileName)
 	print "%d Blocks" % len(blocks)
 	print "\nDecrypted String list: "
 	for blk in blocks:

@@ -29,19 +29,20 @@ class Key(object):
 
 		for i in range(1, 2 * r + 4):
 			s[i] = (s[i - 1] + 0x9E3779B9) % (modulo)
+
 		blok = Block(self._keyStr)
 		encoded = blok.getRegisters()
+
 		enlength = len(encoded)
 		l = enlength * [0]
 		
 		for i in range(1, enlength + 1):
 			l[enlength - i] = long(encoded[i - 1], 2)
 		
-		v = 3 * max(enlength, 2 * r + 4)
-		A=B=i=j=0
+		v = 3 * max(enlength, 2 * r + 4, 32)
+		A = B = i = j = 0
 		
 		for index in range(0, v):
-			
 			A = s[i] = ROL((s[i] + A + B) % modulo, 3, 32)
 			B = l[j] = ROL((l[j] + A + B) % modulo, (A + B) % 32, 32) 
 			i = (i + 1) % (2 * r + 4)
