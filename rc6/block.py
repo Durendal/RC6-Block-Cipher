@@ -25,7 +25,7 @@ class Block(object):
 		return self._sentence
 
 	def __repr__(self):
-		return "Block: <%s>" % (self._sentence)
+		return "<Block: %s>" % (self._sentence)
 
 	def getString(self):
 		return self._sentence
