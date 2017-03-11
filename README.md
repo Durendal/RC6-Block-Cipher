@@ -47,7 +47,7 @@ Values for w/r/b are 32/20/128
 		print "Test String: %s, Key: %s" % (testString, testKey)
 		res2, str2 = rc6.decrypt(str, testKey)
 		print "len(testString): %d" % len(testString)
-		print "len(str1): %d" % len(str)
+		print "len(str): %d" % len(str)
 		print "len(str2): %d" % len(str2)
 		print "Before: ", str
 		print "After: ", str2
