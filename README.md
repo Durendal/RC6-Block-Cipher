@@ -43,13 +43,13 @@ Values for w/r/b are 32/20/128
 
 		testString = "This is a test string that is more than 16 chars and spans over multiple blocks"
 		testKey = "abcdefghijklmnopqrstuvqxyz"
-		res, str1 = rc6.encrypt(testString, testKey)
+		res, str = rc6.encrypt(testString, testKey)
 		print "Test String: %s, Key: %s" % (testString, testKey)
 		res2, str2 = rc6.decrypt(str, testKey)
 		print "len(testString): %d" % len(testString)
-		print "len(str1): %d" % len(str1)
+		print "len(str1): %d" % len(str)
 		print "len(str2): %d" % len(str2)
-		print "Before: ", str1
+		print "Before: ", str
 		print "After: ", str2
 	
 	output:
