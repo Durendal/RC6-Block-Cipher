@@ -22,7 +22,7 @@ class Block(object):
 		self._numRegs = len(self._registers)
 
 	def __str__(self):
-		return self._sentence
+		return self.getString()
 
 	def __repr__(self):
 		return "<Block: %s>" % (self._sentence)
